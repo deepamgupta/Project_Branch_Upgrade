@@ -356,10 +356,10 @@ class BranchSlideWindow:
             conn.close()
             return rows
 
-        def fetchSchemeId(course_id,term_id,branch_id):
+        def fetchSchemeId(year,course_id,term_id,branch_id):
             conn = connect(host='localhost', database='test', user='root', passwd='')
             curobj = conn.cursor()
-            curobj.execute("SELECT id from scheme where course_id='%d' and term_id='%d' and branch_id='%d'"%(course_id,term_id,branch_id))
+            curobj.execute("SELECT id from scheme where year='%d' and course_id='%d' and term_id='%d' and branch_id='%d'"%(year,course_id,term_id,branch_id,))
             rows=curobj.fetchall()
             conn.close()
             return rows
@@ -456,7 +456,9 @@ class BranchSlideWindow:
                     course_id=16
                     term_id=85
 
-                    scheme=fetchSchemeId(course_id,term_id,branch_id)
+		    year=self.batch.get()
+
+                    scheme=fetchSchemeId(year,course_id,term_id,branch_id)
 
                     new_cr_id=fetchId(oldrollNumber)
 
