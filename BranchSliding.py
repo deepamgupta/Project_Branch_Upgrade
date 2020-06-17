@@ -456,7 +456,7 @@ class BranchSlideWindow:
                     course_id=16
                     term_id=85
 
-		    year=self.batch.get()
+                    year=self.batchbox.get()
 
                     scheme=fetchSchemeId(year,course_id,term_id,branch_id)
 
